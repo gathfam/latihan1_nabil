@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "message": "sukses menampilkan data",
+  "data": [
+    {
+      "email": "nabil.gathfan@gmail.com",
+      "password": "hannamKang"
+    }
+  ]
+}

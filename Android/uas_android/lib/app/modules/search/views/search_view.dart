@@ -26,11 +26,10 @@ class SearchView extends GetView<SearchController> {
                   child: Column(children: [
                     Center(
                       child: Wrap(
-                        runSpacing: MediaQuery.of(context).size.width * 0.02,
-                        spacing: MediaQuery.of(context).size.width * 0.02,
-                        children: List.generate(20, (index) {
-                          return book2(
-                              context, "Book ${index}", "John ${index}");
+                        runSpacing: MediaQuery.of(context).size.width * 0.045,
+                        spacing: MediaQuery.of(context).size.width * 0.045,
+                        children: List.generate(10, (index) {
+                          return bookOther(context, "");
                         }),
                       ),
                     ),

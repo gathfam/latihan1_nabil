@@ -18,10 +18,10 @@ Widget buttonOutline(
     },
     child: Container(
       width: MediaQuery.of(context).size.width * width,
-      height: MediaQuery.of(context).size.width * 0.1,
+      height: MediaQuery.of(context).size.width * 0.15,
       decoration: BoxDecoration(
-        border: Border.all(width: 2, color: Colors.purple),
-        borderRadius: BorderRadius.circular(15),
+        border: Border.all(width: 2, color: Colors.black87),
+        borderRadius: BorderRadius.circular(20),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -35,7 +35,7 @@ Widget buttonOutline(
       child: Center(
           child: Text(
         text,
-        style: TextStyle(color: color, fontSize: size),
+        style: TextStyle(color: Colors.black87, fontSize: size),
       )),
     ),
   );

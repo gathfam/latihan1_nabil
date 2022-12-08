@@ -58,22 +58,16 @@ Widget banner(BuildContext context) {
         width: MediaQuery.of(context).size.width * 1,
         height: MediaQuery.of(context).size.width * 1.13,
         decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage("")),
-            color: Colors.purple[800],
-            borderRadius: BorderRadius.circular(15)),
+          image: DecorationImage(
+              image: AssetImage("image/undraw.png"), fit: BoxFit.cover),
+          // color: Colors.purple[800],
+          // borderRadius: BorderRadius.circular(15)
+        ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'LASKAR',
-                style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white),
-              ),
-            ],
+            children: [],
           ),
         ),
       ),

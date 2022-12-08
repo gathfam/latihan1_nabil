@@ -1,4 +1,4 @@
-// To parse this JSON data, do
+// To parse required this JSON data, do
 //
 //     final bookData = bookDataFromJson(jsonString);
 
@@ -13,10 +13,10 @@ class BookData {
         required this.data,
     });
 
-    List<Datum> data;
+    List<Books> data;
 
     factory BookData.fromJson(Map<String, dynamic> json) => BookData(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<Books>.from(json["data"].map((x) => Books.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -24,26 +24,42 @@ class BookData {
     };
 }
 
-class Datum {
-    Datum({
+class Books {
+    Books({
         required this.title,
         required this.img,
+        required this.description,
+        required this.genre,
         required this.author,
+        required this.rating,
+        required this.reviews,
     });
 
     String title;
     String img;
+    String description;
+    List<String> genre;
     String author;
+    double rating;
+    int reviews;
 
-    factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+    factory Books.fromJson(Map<String, dynamic> json) => Books(
         title: json["title"],
         img: json["img"],
+        description: json["description"],
+        genre: List<String>.from(json["genre"].map((x) => x)),
         author: json["author"],
+        rating: json["rating"].toDouble(),
+        reviews: json["reviews"],
     );
 
     Map<String, dynamic> toJson() => {
         "title": title,
         "img": img,
+        "description": description,
+        "genre": List<dynamic>.from(genre.map((x) => x)),
         "author": author,
+        "rating": rating,
+        "reviews": reviews,
     };
 }

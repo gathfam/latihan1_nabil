@@ -5,12 +5,18 @@ import 'package:uas2022/app/modules/component/button.dart';
 import 'package:uas2022/app/modules/component/parts.dart';
 import 'package:uas2022/app/modules/home/views/home_view.dart';
 
+import '../../../data/model/BookModel.dart';
 import '../../login/views/pages/banner.dart';
 import '../controllers/detail_book_controller.dart';
 
 class DetailBookView extends GetView<DetailBookController> {
   @override
+  var data = Get.arguments;
+  // final Books data;
+  // DetailBookView({required this.data});
+
   Widget build(BuildContext context) {
+    print(data.title);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -39,9 +45,9 @@ class DetailBookView extends GetView<DetailBookController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                header(context, "Book Title"),
+                header(context, data.title, data.img, data.author),
                 sinopsis(context),
-                parts(context)
+                // parts(context)
               ],
             ),
           ),
@@ -51,14 +57,14 @@ class DetailBookView extends GetView<DetailBookController> {
   }
 }
 
-Widget header(BuildContext context, String title) {
+Widget header(BuildContext context, String title, String img, String author) {
   return Container(
     height: MediaQuery.of(context).size.width * 0.4,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        // book(context, ""),
+        book(context, img),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
@@ -73,7 +79,7 @@ Widget header(BuildContext context, String title) {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                   ),
                   Text(
-                    "John McCaddy",
+                    author,
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
                   ),
                 ],
@@ -179,39 +185,24 @@ Widget sinopsis(BuildContext context) {
   );
 }
 
-Widget parts(BuildContext context) {
+Widget book(
+  BuildContext context,
+  String image,
+) {
   return Container(
-    margin: EdgeInsets.only(top: 30.0),
-    width: MediaQuery.of(context).size.width * 1,
-    height: MediaQuery.of(context).size.width * 1.08,
-    child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Parts",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+    width: MediaQuery.of(context).size.width * 0.3,
+    height: MediaQuery.of(context).size.width * 0.65,
+    decoration: BoxDecoration(
+        color: Colors.purple[800],
+        borderRadius: BorderRadius.circular(10.0),
+        image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            spreadRadius: 0,
+            blurRadius: 4,
+            offset: Offset(0, 4), // changes position of shadow
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            height: MediaQuery.of(context).size.width * 1,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  Wrap(
-                    verticalDirection: VerticalDirection.down,
-                    runSpacing: MediaQuery.of(context).size.width * 0.02,
-                    children: List.generate(
-                      10,
-                      (index) => partsButton("${index}", "Part Title", "/book",
-                          context, Colors.white, 1, 13),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
         ]),
   );
 }

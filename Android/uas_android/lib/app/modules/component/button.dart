@@ -18,10 +18,10 @@ Widget button(
     },
     child: Container(
       width: MediaQuery.of(context).size.width * width,
-      height: MediaQuery.of(context).size.width * 0.1,
+      height: MediaQuery.of(context).size.width * 0.15,
       decoration: BoxDecoration(
-        color: Colors.purple[800],
-        borderRadius: BorderRadius.circular(15),
+        color: Colors.black87,
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

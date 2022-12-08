@@ -29,17 +29,16 @@ class DashboardView extends StatelessWidget {
                 padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.purple[800]),
+                    color: Colors.black87),
                 child: GNav(
-                    backgroundColor: Colors.purple.shade800,
-                    hoverColor: Colors.purple, // tab button hover color
+                    // backgroundColor: Colors.black87,
+                    hoverColor: Colors.white, // tab button hover color
                     tabBorderRadius: 10,
                     duration:
                         Duration(milliseconds: 300), // tab animation duration
                     gap: 8, // the tab button gap between icon and text
                     color: Colors.white, // unselected icon color
-                    activeColor:
-                        Colors.purple.shade800, // selected icon and text color
+                    activeColor: Colors.black87, // selected icon and text color
                     iconSize: 20, // tab button icon size
                     tabBackgroundColor: Colors.white,
                     onTabChange: controller.changeTabIndex,

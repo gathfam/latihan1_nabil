@@ -1,22 +1,24 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart' as http;
 import '../../../data/model/BookModel.dart';
 import '../../../data/service/BookService.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
 
+  String url = "https://teal-perfect-wasp.cyclic.app/nabil";
   final count = 0.obs;
   final pages = ["/home", "/search", "/collection"].obs;
-  List<BookData> dataBooks = [];
+  var isLoading = false.obs;
+  final user = "Username".obs;
+  final book = [].obs;
+  var index = 1.obs;
 
   void onInit() {
-    // print("Book Data ${dataBooks}");
-    getData().then((value) {
-      dataBooks = value;
-      update();
-    });
+    getBook();
     super.onInit();
   }
 
@@ -30,16 +32,38 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  getData() async {
-    final String response =
-        //proses membaca json menjadi string
-        await rootBundle.loadString('../product.json');
+//   getData() async {
+//     final String response = await rootBundle
+//         .loadString('https://teal-perfect-wasp.cyclic.app/nabil');
+//     BookData data = bookDataFromJson(response);
+//     // print(data.data);
+//     // print("==========================");
+//     dataBooks.value = data.data;
+//     //mengirim data list food yang spesifik
+//     // return data.data;
+//   }
+// }
 
-    // merubah json menjadi variable dataFoods
-    // DataProducts data = dataProductsFromJson(response);
-    BookData data = bookDataFromJson(response);
-
-    //mengirim data list food yang spesifik
-    return data.data;
+  getBook() async {
+    try {
+      print('jalan');
+      print(book.value);
+      Uri urlData = Uri.parse(url);
+      final responses = await http.get(urlData);
+      print(responses.statusCode);
+      if (responses.statusCode == 200) {
+        BookData data = bookDataFromJson(responses.body.toString());
+        // log("berhasil");
+        print(data);
+        print(data);
+        book.value = data.data;
+        return data;
+      } else {
+        print(responses.body);
+        return [];
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

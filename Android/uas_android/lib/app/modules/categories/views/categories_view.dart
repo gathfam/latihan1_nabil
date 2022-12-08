@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
-import '../../component/book2.dart';
+import 'package:uas2022/app/modules/detailBook/views/detail_book_view.dart';
 import '../controllers/categories_controller.dart';
 
 class CategoriesView extends GetView<CategoriesController> {
   @override
+  var data = Get.arguments;
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -44,11 +44,11 @@ class CategoriesView extends GetView<CategoriesController> {
                           Center(
                             child: Wrap(
                               runSpacing:
-                                  MediaQuery.of(context).size.width * 0.02,
-                              spacing: MediaQuery.of(context).size.width * 0.02,
-                              children: List.generate(20, (index) {
-                                return book2(
-                                    context, "Book ${index}", "John ${index}");
+                                  MediaQuery.of(context).size.width * 0.04,
+                              spacing: MediaQuery.of(context).size.width * 0.04,
+                              children: List.generate(5, (index) {
+                                return book(
+                                    context, data[index].img, data[index]);
                               }),
                             ),
                           ),
@@ -78,6 +78,31 @@ Widget genre(BuildContext context, controller) {
           }),
         ),
       ]),
+    ),
+  );
+}
+
+Widget book(BuildContext context, String image, final data) {
+  return InkWell(
+    onTap: () {
+      // Get.toNamed('/detail-book', arguments: data);
+      Get.toNamed('/detail-book', arguments: data);
+    },
+    child: Container(
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: MediaQuery.of(context).size.width * 0.6,
+      decoration: BoxDecoration(
+          color: Colors.purple[800],
+          borderRadius: BorderRadius.circular(10.0),
+          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              spreadRadius: 0,
+              blurRadius: 4,
+              offset: Offset(0, 4), // changes position of shadow
+            ),
+          ]),
     ),
   );
 }

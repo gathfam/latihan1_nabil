@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:uas2022/app/data/model/BookModel.dart';
+import 'package:uas2022/app/modules/home/controllers/home_controller.dart';
 
 import '../modules/book/bindings/book_binding.dart';
 import '../modules/book/views/book_view.dart';
@@ -71,6 +73,7 @@ class AppPages {
     GetPage(
       name: _Paths.DETAIL_BOOK,
       page: () => DetailBookView(),
+      // arguments: "Tes",
       binding: DetailBookBinding(),
     ),
     GetPage(
