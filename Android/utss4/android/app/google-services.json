@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "472483539179",
+    "project_id": "pembayaranspp-46203",
+    "storage_bucket": "pembayaranspp-46203.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472483539179:android:7b55875796024ff70c76ae",
+        "android_client_info": {
+          "package_name": "com.utsnabil.utss4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472483539179-iu0gd43j84drf894cadivp1dgnja4paq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeR80YzpWjfdOM7aZB1h7ExHn-9s0i8OY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472483539179-iu0gd43j84drf894cadivp1dgnja4paq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "472483539179-3gu9l1eukd3jc553j80tetl4gl1lnfrg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.utsnabil.utss4.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
